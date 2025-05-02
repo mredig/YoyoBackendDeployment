@@ -9,7 +9,7 @@ services:
       - "--address"
       - "0.0.0.0"
       - "--port"
-      - "8080"
+      - "8000"
       - "--migrate"
     networks:
       - caddy_proxy
@@ -28,7 +28,7 @@ services:
     image: adminer
     restart: unless-stopped
     ports:
-      - 8080:8080
+      - 8080:8081
     networks:
       - caddy_proxy
 
