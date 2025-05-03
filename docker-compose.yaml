@@ -21,7 +21,7 @@ services:
       SIWA_SERVICE_ID_FILE: /run/secrets/siwa_service_id
       SIWA_TEAM_ID_FILE: /run/secrets/siwa_team_id
       SIWA_JWK_ID_FILE: /run/secrets/siwa_jwk_id
-      SIWA_KEY_FILE: /run/secrets/siwa_key
+      SIWA_PRIVATE_KEY_B64_FILE: /run/secrets/siwa_private_key_b64
       SIWA_REDIRECT_URL_FILE: /run/secrets/siwa_redirect_url
     networks:
       - caddy_proxy
@@ -29,6 +29,11 @@ services:
       - yoyo_db_pw
       - yoyo_db_user
       - yoyo_db
+      - siwa_service_id
+      - siwa_team_id
+      - siwa_jwk_id
+      - siwa_private_key_b64
+      - siwa_redirect_url
 
   yoyo-db:
     image: postgres:alpine
@@ -70,7 +75,7 @@ secrets:
     external: true
   siwa_jwk_id:
     external: true
-  siwa_key:
+  siwa_private_key_b64:
     external: true
   siwa_redirect_url:
     external: true
