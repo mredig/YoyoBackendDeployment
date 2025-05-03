@@ -23,8 +23,13 @@ services:
     volumes:
       - ./pg_store:/var/lib/postgresql/data
     environment:
-      POSTGRES_PASSWORD: temporary-example-password
-      POSTGRES_USER: yoyo_backend
+      POSTGRES_PASSWORD_FILE: /run/secrets/yoyo_db_pw
+      POSTGRES_USER_FILE: /run/secrets/yoyo_db_user
+      POSTGRES_DB_FILE: /run/secrets/yoyo_db
+    secrets:
+      - yoyo_db_pw
+      - yoyo_db_user
+      - yoyo_db
 
   yoyo-db-admin:
     image: adminer
@@ -36,4 +41,12 @@ services:
 
 networks:
   caddy_proxy:
+    external: true
+
+secrets:
+  yoyo_db_pw:
+    external: true
+  yoyo_db_user:
+    external: true
+  yoyo_db:
     external: true
