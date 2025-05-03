@@ -18,6 +18,11 @@ services:
       POSTGRES_USER_FILE: /run/secrets/yoyo_db_user
       POSTGRES_DB_FILE: /run/secrets/yoyo_db
       POSTGRES_HOST: "yoyo-db"
+      SIWA_SERVICE_ID_FILE: /run/secrets/siwa_service_id
+      SIWA_TEAM_ID_FILE: /run/secrets/siwa_team_id
+      SIWA_JWK_ID_FILE: /run/secrets/siwa_jwk_id
+      SIWA_KEY_FILE: /run/secrets/siwa_key
+      SIWA_REDIRECT_URL_FILE: /run/secrets/siwa_redirect_url
     networks:
       - caddy_proxy
     secrets:
@@ -58,4 +63,14 @@ secrets:
   yoyo_db_user:
     external: true
   yoyo_db:
+    external: true
+  siwa_service_id:
+    external: true
+  siwa_team_id:
+    external: true
+  siwa_jwk_id:
+    external: true
+  siwa_key:
+    external: true
+  siwa_redirect_url:
     external: true
