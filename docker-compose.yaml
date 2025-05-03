@@ -3,7 +3,7 @@ x-shared_environment: &shared_environment
 
 services:
   yoyo-backend:
-    image: ghcr.io/mredig/notesync:latest
+    image: ghcr.io/yoyo-app/notesync:latest
     restart: unless-stopped
     command: 
       - "--address"
