@@ -13,8 +13,17 @@ services:
       - "--migrate"
       - "--log-level"
       - "trace"
+    environment:
+      POSTGRES_PASSWORD_FILE: /run/secrets/yoyo_db_pw
+      POSTGRES_USER_FILE: /run/secrets/yoyo_db_user
+      POSTGRES_DB_FILE: /run/secrets/yoyo_db
+      POSTGRES_HOST: "yoyo-db"
     networks:
       - caddy_proxy
+    secrets:
+      - yoyo_db_pw
+      - yoyo_db_user
+      - yoyo_db
 
   yoyo-db:
     image: postgres:alpine
