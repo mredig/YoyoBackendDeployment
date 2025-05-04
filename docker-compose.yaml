@@ -23,6 +23,8 @@ services:
       SIWA_JWK_ID_FILE: /run/secrets/siwa_jwk_id
       SIWA_PRIVATE_KEY_B64_FILE: /run/secrets/siwa_private_key_b64
       SIWA_REDIRECT_URL_FILE: /run/secrets/siwa_redirect_url
+      LISTMONK_API_KEY: /run/secrets/listmonk_api_key
+      LISTMONK_API_SECRET: /run/secrets/listmonk_api_secret
     networks:
       - caddy_proxy
     secrets:
@@ -34,6 +36,10 @@ services:
       - siwa_jwk_id
       - siwa_private_key_b64
       - siwa_redirect_url
+      - listmonk_api_key
+      - listmonk_api_secret
+    depends_on:
+      - db
 
   yoyo-db:
     image: postgres:alpine
@@ -57,7 +63,9 @@ services:
     #   - 8081:8080
     networks:
       - caddy_proxy
-
+    depends_on:
+      - db
+      
 networks:
   caddy_proxy:
     external: true
@@ -78,4 +86,8 @@ secrets:
   siwa_private_key_b64:
     external: true
   siwa_redirect_url:
+    external: true
+  listmonk_api_key:
+    external: true
+  listmonk_api_secret:
     external: true
