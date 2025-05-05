@@ -25,6 +25,7 @@ services:
       SIWA_REDIRECT_URL_FILE: /run/secrets/siwa_redirect_url
       LISTMONK_API_KEY: /run/secrets/listmonk_api_key
       LISTMONK_API_SECRET: /run/secrets/listmonk_api_secret
+      LISTMONK_API_BASE_URL: "http://listmonk.redig.me:9000/api"
     networks:
       - caddy_proxy
     secrets:
